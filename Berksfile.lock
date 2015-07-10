@@ -1,0 +1,107 @@
+DEPENDENCIES
+  apt
+    git: git://github.com/opscode-cookbooks/apt.git
+    revision: 497732c18e2d80296b04e96df09899b032ec84fd
+  chef-solo-search
+    git: git://github.com/edelight/chef-solo-search.git
+    revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
+  elixir
+    git: git://github.com/reset/elixir-cookbook.git
+    revision: b95c7ed785ffca4505647806672d38ed63e99e79
+  fail2ban
+    git: git://github.com/opscode-cookbooks/fail2ban.git
+    revision: ec228bab671f8eed3ba7c2a40d4af43bc1ca9093
+  locales
+    git: git://github.com/phbergsmann/chef-locales.git
+    revision: 5ad79628e627a66edf028fe55fa7c92d26687cf0
+  look_and_feel-tlq
+    git: git://github.com/TalkingQuickly/look_and_feel-tlq.git
+    revision: 214b18d5266909721e85fe3acac4f7c926a0c609
+  monit-tlq
+    git: git://github.com/TalkingQuickly/monit-tlq.git
+    revision: 28bbdc06702a00c5cb5ace1fd7f79a51a127ed0c
+    branch: master
+  monit_configs-tlq
+    git: git://github.com/TalkingQuickly/monit_configs-tlq.git
+    revision: c10ee522a69db1ec48672a2b1c8a42ae92e027e1
+    branch: master
+  ntp
+    git: git://github.com/gmiranda23/ntp.git
+    revision: 95bec55b5b895c370e63aef2c5aef2d2ca6abc89
+  openssh
+    git: git://github.com/opscode-cookbooks/openssh.git
+    revision: 3d1f169a42189412d3a11d64462152cd966fefb4
+  postgresql
+    git: git://github.com/opscode-cookbooks/postgresql.git
+    revision: d57d9e820f90d7e09fc4467d51ff9b5408be9048
+  sudo
+    git: git://github.com/opscode-cookbooks/sudo.git
+    revision: 3ee091a8cf9c531038a09602fb562de54399c8bc
+  ufw
+    git: git://github.com/opscode-cookbooks/ufw.git
+    revision: d80d4071aa55c54dd6978cb46e778246e39dd1f9
+  users
+    git: git://github.com/opscode-cookbooks/users.git
+    revision: 70585d1eda03c2d6ef0244f33cf359bab21a1b63
+
+GRAPH
+  apt (2.7.0)
+  build-essential (2.2.3)
+  chef-solo-search (0.5.2)
+  chef-sugar (3.1.1)
+  chef_handler (1.2.0)
+  dmg (2.2.2)
+  elixir (0.10.0)
+    apt (~> 2.7)
+    erlang (>= 0.0.0)
+    git (>= 0.0.0)
+    github (>= 0.0.0)
+    libarchive (~> 0.4)
+  erlang (1.5.8)
+    apt (>= 1.7.0)
+    build-essential (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
+    yum-erlang_solutions (>= 0.0.0)
+  fail2ban (2.2.1)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
+  firewall (1.5.0)
+    poise (~> 2.0)
+  git (4.2.2)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    windows (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  github (0.3.0)
+    libarchive (>= 0.0.0)
+  iptables (1.0.0)
+  libarchive (0.5.0)
+    apt (~> 2.5)
+    build-essential (~> 2.0)
+  locales (0.3.1)
+  look_and_feel-tlq (0.0.5)
+    locales (>= 0.0.0)
+  monit-tlq (0.3.11)
+  monit_configs-tlq (0.1.2)
+  ntp (1.8.6)
+  openssh (1.5.2)
+    iptables (>= 0.0.0)
+  openssl (4.0.0)
+    chef-sugar (>= 0.0.0)
+  poise (2.1.0)
+  postgresql (3.4.20)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (~> 4.0.0)
+  sudo (2.7.1)
+  ufw (0.7.5)
+    firewall (>= 0.9.0)
+  users (1.8.3)
+  windows (1.37.0)
+    chef_handler (>= 0.0.0)
+  yum (3.6.1)
+  yum-epel (0.6.2)
+    yum (~> 3.2)
+  yum-erlang_solutions (0.2.0)
+    yum (~> 3.0)

@@ -1,1 +1,16 @@
-site :opscode
+source "https://supermarket.chef.io"
+
+cookbook 'apt', github: 'opscode-cookbooks/apt'
+cookbook 'chef-solo-search', github: 'edelight/chef-solo-search'
+cookbook 'elixir', github: 'reset/elixir-cookbook'
+cookbook 'fail2ban', github: 'opscode-cookbooks/fail2ban'
+cookbook 'locales', github: 'phbergsmann/chef-locales'
+cookbook 'look_and_feel-tlq', github: 'TalkingQuickly/look_and_feel-tlq'
+cookbook 'monit-tlq', github: 'TalkingQuickly/monit-tlq', branch: 'master'
+cookbook 'monit_configs-tlq', github: 'TalkingQuickly/monit_configs-tlq', branch: 'master'
+cookbook 'ntp', github: 'gmiranda23/ntp'
+cookbook 'openssh', github: 'opscode-cookbooks/openssh'
+cookbook 'postgresql', github: 'opscode-cookbooks/postgresql'
+cookbook 'sudo', github: 'opscode-cookbooks/sudo'
+cookbook 'ufw', github: 'opscode-cookbooks/ufw'
+cookbook 'users', github: 'opscode-cookbooks/users'
