@@ -1,0 +1,10 @@
+#!/bin/sh
+git --work-tree=/var/www/app.com --git-dir=/var/repo/app.git checkout -f
+cd /var/www/app.com
+npm install &&
+  node_modules/bower/bin/bower install &&
+  node_modules/brunch/bin/brunch build --production &&
+  MIX_ENV=prod PORT=8888 mix do deps.get, deps.compile, ecto.migrate &&
+  MIX_ENV=prod mix phoenix.digest &&
+  MIX_ENV=prod PORT=8080 elixir --detached -S mix phoenix.server &&
+  sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
