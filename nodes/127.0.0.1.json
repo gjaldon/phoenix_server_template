@@ -12,11 +12,12 @@
     }
   },
   "postgresql" : {
+    "database_name": "postgres_prod",
     "password" : {
       // this should be generated with:
       // openssl passwd -1 "plaintextpassword"
       // currently test
-      "postgres" : "$1$mMK9HNoN$r42n7Q8fKsZabbknlT1Zt1"
+      "postgres" : "test"
     }
   },
   "monit": {
