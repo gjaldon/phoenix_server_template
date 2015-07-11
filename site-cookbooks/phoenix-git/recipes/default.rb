@@ -1,6 +1,36 @@
+require 'securerandom'
+
 package "nodejs-legacy"
 package "npm"
 package "git"
+
+file "/etc/profile.d/MIX_ENV.sh" do
+  content "export MIX_ENV=prod"
+  owner "root"
+  group "deploy"
+  action :create_if_missing
+end
+
+file "/etc/profile.d/SECRET_KEY_BASE.sh" do
+  content "export SECRET_KEY_BASE=#{SecureRandom.base64(64)}"
+  owner "root"
+  group "deploy"
+  action :create_if_missing
+end
+
+file "/etc/profile.d/DATABASE_URL.sh" do
+  content "export DATABASE_URL='postgresql://postgres:test@localhost/postgres_prod'"
+  owner "root"
+  group "deploy"
+  action :create_if_missing
+end
+
+file "/etc/profile.d/PORT.sh" do
+  content "export PORT=8080"
+  owner "root"
+  group "deploy"
+  action :create_if_missing
+end
 
 %w(/var/repo /var/repo/app.git).each do |path|
   directory path do
