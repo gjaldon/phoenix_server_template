@@ -4,12 +4,19 @@
   "default_attributes": {
     "elixir": {
       "version": "1.0.5"
+    },
+    "firewall" : {
+      "rules" : [
+        {"allow http on port 80" : {"port" : 80}},
+        {"allow http on port 8080" : {"port" : 8080}}
+      ]
     }
   },
   "json_class": "Chef::Role",
   "run_list": [
     "recipe[elixir::default]",
-    "recipe[phoenix-git::default]"
+    "recipe[phoenix-git::default]",
+    "recipe[ufw::default]"
   ],
   "chef_type": "role"
 }
