@@ -3,9 +3,7 @@
   "description": "Runs Phoenix apps",
   "default_attributes": {
     "elixir": {
-      "source": {
-        "revision": "1.0.5"
-      }
+      "version": "1.0.5"
     }
   },
   "json_class": "Chef::Role",
