@@ -29,6 +29,7 @@ file "/etc/profile.d/PORT.sh" do
   content "export PORT=8080"
   owner "root"
   group "deploy"
+  mode "0775"
   action :create_if_missing
 end
 

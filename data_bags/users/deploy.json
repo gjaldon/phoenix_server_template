@@ -6,6 +6,6 @@
   // be able to login as deploy
   "ssh_keys": [
   ],
-  "groups": [ "sysadmin"],
+  "groups": ["deploy"],
   "shell": "\/bin\/bash"
 }
