@@ -12,7 +12,6 @@
     }
   },
   "postgresql" : {
-    "database_name": "postgres_prod",
     "password" : {
       // this should be generated with:
       // openssl passwd -1 "plaintextpassword"

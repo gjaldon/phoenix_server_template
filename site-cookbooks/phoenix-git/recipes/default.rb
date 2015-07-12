@@ -1,3 +1,5 @@
+include_recipe "database::postgresql"
+
 require 'securerandom'
 
 package "nodejs-legacy"
@@ -31,6 +33,16 @@ file "/etc/profile.d/PORT.sh" do
   group "deploy"
   mode "0775"
   action :create_if_missing
+end
+
+postgresql_database 'postgres_prod' do
+  connection(
+    :host      => '127.0.0.1',
+    :port      => 5432,
+    :username  => 'postgres',
+    :password  => 'test'
+  )
+  action :create
 end
 
 %w(/var/repo /var/repo/app.git).each do |path|

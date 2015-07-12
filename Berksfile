@@ -2,6 +2,7 @@ source "https://supermarket.chef.io"
 
 cookbook 'apt', github: 'opscode-cookbooks/apt'
 cookbook 'chef-solo-search', github: 'edelight/chef-solo-search'
+cookbook 'database', github: 'opscode-cookbooks/database'
 cookbook 'elixir', github: 'reset/elixir-cookbook'
 cookbook 'fail2ban', github: 'opscode-cookbooks/fail2ban'
 cookbook 'locales', github: 'phbergsmann/chef-locales'

@@ -5,6 +5,9 @@ DEPENDENCIES
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
     revision: 72bd5e3507056e5c931ee0cf7516ce1bfbce6d51
+  database
+    git: git://github.com/opscode-cookbooks/database.git
+    revision: 988b3f905d672cd0e7ad584a127ce70a7c17dd3d
   elixir
     git: git://github.com/reset/elixir-cookbook.git
     revision: b95c7ed785ffca4505647806672d38ed63e99e79
@@ -50,6 +53,8 @@ GRAPH
   chef-solo-search (0.5.2)
   chef-sugar (3.1.1)
   chef_handler (1.2.0)
+  database (4.0.6)
+    postgresql (>= 1.0.0)
   dmg (2.2.2)
   elixir (0.10.0)
     apt (~> 2.7)
