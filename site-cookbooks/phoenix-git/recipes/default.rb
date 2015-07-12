@@ -53,24 +53,6 @@ end
   end
 end
 
-execute "install hex" do
-  user "root"
-  group "deploy"
-  cwd "#{ENV["HOME"]}"
-  command "mix local.hex --force"
-  creates "#{ENV["HOME"]}/.mix/archives/hex.ez"
-  action :run
-end
-
-execute "install rebar" do
-  user "root"
-  group "deploy"
-  cwd "#{ENV["HOME"]}"
-  command "mix local.rebar"
-  creates "#{ENV["HOME"]}/.mix/rebar"
-  action :run
-end
-
 execute "set-up bare git repo" do
   cwd "/var/repo/app.git"
   creates "/var/repo/app.git/config"
