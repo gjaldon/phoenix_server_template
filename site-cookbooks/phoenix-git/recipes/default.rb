@@ -9,28 +9,28 @@ package "git"
 file "/etc/profile.d/MIX_ENV.sh" do
   content "export MIX_ENV=prod"
   owner "root"
-  group "deploy"
+  group "sysadmin"
   action :create_if_missing
 end
 
 file "/etc/profile.d/SECRET_KEY_BASE.sh" do
   content "export SECRET_KEY_BASE=#{SecureRandom.base64(64)}"
   owner "root"
-  group "deploy"
+  group "sysadmin"
   action :create_if_missing
 end
 
 file "/etc/profile.d/DATABASE_URL.sh" do
   content "export DATABASE_URL='postgresql://postgres:test@localhost/postgres_prod'"
   owner "root"
-  group "deploy"
+  group "sysadmin"
   action :create_if_missing
 end
 
 file "/etc/profile.d/PORT.sh" do
   content "export PORT=8080"
   owner "root"
-  group "deploy"
+  group "sysadmin"
   mode "0775"
   action :create_if_missing
 end
@@ -48,7 +48,7 @@ end
 %w(/var/repo /var/repo/app.git).each do |path|
   directory path do
     owner "deploy"
-    group "deploy"
+    group "sysadmin"
     action :create
   end
 end
@@ -58,13 +58,13 @@ execute "set-up bare git repo" do
   creates "/var/repo/app.git/config"
   command "git init --bare"
   user "deploy"
-  group "deploy"
+  group "sysadmin"
   action :run
 end
 
 template "/var/repo/app.git/hooks/post-receive" do
   owner "deploy"
-  group "deploy"
+  group "sysadmin"
   mode "0555"
   source "post-receive.erb"
 end
@@ -72,7 +72,7 @@ end
 %w(/var/www /var/www/app.com).each do |path|
   directory path do
     owner "deploy"
-    group "deploy"
+    group "sysadmin"
     action :create
   end
 end

@@ -5,7 +5,8 @@
   // the below should contain a list of ssh public keys which should
   // be able to login as deploy
   "ssh_keys": [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5ib00zUqWzzec3QnITg8q/6Ua9LG5uBkAmtLhzxxAcTNqCTreBj4FWnBIxFnyYoldEkeqEsvfCzvNsRhDh85vN3Q5GbaByIpvG2ZE02p9T+RlAuA9TMZ+Ih/HEKD/ts6cIsmlTCjdUmZawJH6xYnWa5nDGVtmnFG9TnwD2QBVimtdg1N8Cg5Y5eNlNOTQlYxchKkKTbxAlC6k21/pVpPyHms4meJdaHjfKRchme90jW/8dlHo//hH4bGqR7o44P/Eu/KMypvGPPLN99NdIrsUZGfQKyjWEI+hWelCoaPIeMTZg3J0NkQI0mtRTebVp5U8Zo4U7bDOhskZmOp8gAjV gjaldon85@gmail.com"
   ],
-  "groups": ["deploy"],
+  "groups": ["sysadmin"],
   "shell": "\/bin\/bash"
 }
