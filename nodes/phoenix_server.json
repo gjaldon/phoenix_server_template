@@ -36,6 +36,9 @@
       "hostname" : "the_hostname"
     }
   },
+  "build_essential": {
+    "compiletime": true
+  },
   "run_list": [
     "role[server]",
     "role[postgres-server]",
