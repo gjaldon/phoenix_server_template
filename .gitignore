@@ -1,2 +1,3 @@
 /cookbooks/
 .vagrant/
+chef-ubuntu-trusty64.box
