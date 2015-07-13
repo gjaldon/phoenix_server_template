@@ -11,3 +11,8 @@ default['phoenix-git']['db_connection'] = {
   :username  => "postgres",
   :password  => "test"
 }
+
+default['phoenix-git']['node_build_commands'] = [
+  "node_modules/bower/bin/bower install",
+  "node_modules/brunch/bin/brunch build --production"
+]

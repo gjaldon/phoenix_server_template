@@ -12,9 +12,8 @@ mix local.hex --force
 mix local.rebar --force
 
 cd /var/www/$app_name.com
-npm install &&
-  node_modules/bower/bin/bower install &&
-  node_modules/brunch/bin/brunch build --production
+
+<%= (["npm install"] + node["phoenix-git"]["node_build_commands"]).join(" && ") %>
 
 if [ $PORT = $app_port_1 ]; then
   PORT=8888 mix do deps.get, deps.compile, phoenix.digest, ecto.migrate &&
