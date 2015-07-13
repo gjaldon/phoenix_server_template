@@ -1,34 +1,39 @@
 #!/bin/bash
+
+app_name=<%= node["phoenix-git"]['app_name'] %>
+app_port_1=<%= node["phoenix-git"]['app_port_1'] %>
+app_port_2=<%= node["phoenix-git"]['app_port_2'] %>
+
 for f in /etc/profile.d/*; do source $f; done
 
-git --work-tree=/var/www/app.com --git-dir=/var/repo/app.git checkout -f
+git --work-tree=/var/www/$app_name.com --git-dir=/var/repo/$app_name.git checkout -f
 
 mix local.hex --force
 mix local.rebar --force
 
-cd /var/www/app.com
+cd /var/www/$app_name.com
 npm install &&
   node_modules/bower/bin/bower install &&
   node_modules/brunch/bin/brunch build --production
 
-if [ $PORT = 8080 ]; then
+if [ $PORT = $app_port_1 ]; then
   PORT=8888 mix do deps.get, deps.compile, phoenix.digest, ecto.migrate &&
-    PORT=8081 elixir --detached -S mix phoenix.server &&
-    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8081
-  sleep 5 && sudo iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
-  previous_port=$(sudo lsof -t -i:8080)
+    PORT=$app_port_2 elixir --detached -S mix phoenix.server &&
+    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $app_port_2
+  sleep 5 && sudo iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $app_port_1
+  previous_port=$(sudo lsof -t -i:$app_port_1)
   if [ -n $previous_port ]; then
     sudo kill $previous_port
   fi
-  echo 'export PORT=8081' > /etc/profile.d/PORT.sh
+  echo "export PORT=$app_port_2" > /etc/profile.d/PORT.sh
 else
   PORT=8888 mix do phoenix.digest, deps.get, deps.compile, ecto.migrate &&
-    PORT=8080 elixir --detached -S mix phoenix.server &&
-    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
-  sleep 5 && sudo iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8081
-  previous_port=$(sudo lsof -t -i:8081)
+    PORT=$app_port_1 elixir --detached -S mix phoenix.server &&
+    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $app_port_1
+  sleep 5 && sudo iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $app_port_2
+  previous_port=$(sudo lsof -t -i:$app_port_2)
   if [ -n $previous_port ]; then
     sudo kill $previous_port
   fi
-  echo 'export PORT=8080' > /etc/profile.d/PORT.sh
+  echo "export PORT=$app_port_1" > /etc/profile.d/PORT.sh
 fi
