@@ -26,7 +26,7 @@ if [ $PORT = $app_port_1 ]; then
   fi
   echo "export PORT=$app_port_2" > /etc/profile.d/PORT.sh
 else
-  PORT=8888 mix do phoenix.digest, deps.get, deps.compile, ecto.migrate &&
+  PORT=8888 mix do deps.get, deps.compile, phoenix.digest, ecto.migrate &&
     PORT=$app_port_1 elixir --detached -S mix phoenix.server &&
     sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $app_port_1
   sleep 5 && sudo iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port $app_port_2
